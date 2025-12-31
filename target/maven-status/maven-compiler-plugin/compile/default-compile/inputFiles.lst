@@ -1,13 +1,16 @@
 D:\Kuliah\Semester 3\Arkom\AsramaAkhlak\src\main\java\com\mycompany\asramaakhlak\AsramaAkhlak.java
 D:\Kuliah\Semester 3\Arkom\AsramaAkhlak\src\main\java\config\DatabaseConfig.java
 D:\Kuliah\Semester 3\Arkom\AsramaAkhlak\src\main\java\controller\DataPenghuniController.java
+D:\Kuliah\Semester 3\Arkom\AsramaAkhlak\src\main\java\controller\LogController.java
 D:\Kuliah\Semester 3\Arkom\AsramaAkhlak\src\main\java\controller\LoginController.java
 D:\Kuliah\Semester 3\Arkom\AsramaAkhlak\src\main\java\controller\PengaduanController.java
+D:\Kuliah\Semester 3\Arkom\AsramaAkhlak\src\main\java\model\Log.java
 D:\Kuliah\Semester 3\Arkom\AsramaAkhlak\src\main\java\model\Pengaduan.java
 D:\Kuliah\Semester 3\Arkom\AsramaAkhlak\src\main\java\model\Penghuni.java
 D:\Kuliah\Semester 3\Arkom\AsramaAkhlak\src\main\java\model\User.java
 D:\Kuliah\Semester 3\Arkom\AsramaAkhlak\src\main\java\view\DataPenghuniFrame.java
 D:\Kuliah\Semester 3\Arkom\AsramaAkhlak\src\main\java\view\FormPengaduan.java
 D:\Kuliah\Semester 3\Arkom\AsramaAkhlak\src\main\java\view\HomepageFrame.java
+D:\Kuliah\Semester 3\Arkom\AsramaAkhlak\src\main\java\view\LogFrame.java
 D:\Kuliah\Semester 3\Arkom\AsramaAkhlak\src\main\java\view\LoginFrame.java
 D:\Kuliah\Semester 3\Arkom\AsramaAkhlak\src\main\java\view\PengaduanFrame.java

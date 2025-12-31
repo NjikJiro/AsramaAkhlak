@@ -3,13 +3,16 @@ model\Penghuni.class
 view\PengaduanFrame$1.class
 view\DataPenghuniFrame$2.class
 view\FormPengaduan.class
+view\LogFrame$1.class
 view\HomepageFrame$3.class
 view\LoginFrame$2.class
+model\Log.class
 view\FormPengaduan$1.class
 controller\LoginController.class
 view\PengaduanFrame$3.class
 controller\DataPenghuniController.class
 model\User.class
+view\LogFrame$2.class
 view\FormPengaduan$3.class
 config\DatabaseConfig.class
 view\LoginFrame$1.class
@@ -21,6 +24,8 @@ view\DataPenghuniFrame$1.class
 controller\PengaduanController.class
 view\HomepageFrame.class
 model\Pengaduan.class
+controller\LogController.class
+view\LogFrame.class
 view\PengaduanFrame.class
 view\DataPenghuniFrame.class
 view\LoginFrame.class

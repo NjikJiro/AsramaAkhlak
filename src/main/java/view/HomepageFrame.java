@@ -5,6 +5,7 @@
 package view;
 
 import controller.DataPenghuniController;
+import controller.LogController;
 import model.User;
 import controller.PengaduanController;
 
@@ -130,7 +131,7 @@ public class HomepageFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        new LogController(this, user).showLog();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
