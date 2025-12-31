@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2025 at 04:36 AM
+-- Generation Time: Dec 31, 2025 at 09:26 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -70,6 +70,22 @@ CREATE TABLE `log_kehadiran` (
   `status` enum('Masuk','Keluar') NOT NULL,
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `log_kehadiran`
+--
+
+INSERT INTO `log_kehadiran` (`id_log`, `waktu`, `status`, `id_user`) VALUES
+(1, '2025-01-10 06:30:00', 'Masuk', 1),
+(2, '2025-01-10 17:05:00', 'Keluar', 1),
+(3, '2025-01-10 06:45:00', 'Masuk', 2),
+(4, '2025-01-10 17:10:00', 'Keluar', 2),
+(5, '2025-01-10 06:50:00', 'Masuk', 3),
+(6, '2025-01-10 17:00:00', 'Keluar', 3),
+(7, '2025-01-10 07:00:00', 'Masuk', 4),
+(8, '2025-01-10 16:55:00', 'Keluar', 4),
+(9, '2025-01-10 07:10:00', 'Masuk', 5),
+(10, '2025-01-10 17:20:00', 'Keluar', 5);
 
 -- --------------------------------------------------------
 
@@ -203,7 +219,7 @@ ALTER TABLE `inventaris_asrama`
 -- AUTO_INCREMENT for table `log_kehadiran`
 --
 ALTER TABLE `log_kehadiran`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `pengaduan`
