@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * 
+ *
  */
 import config.DatabaseConfig;
 import java.sql.*;
@@ -14,8 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pengaduan {
+
     private String isi, status, idUser;
-    
+
     public static List<Pengaduan> getData() {
         List<Pengaduan> list = new ArrayList<>();
 
@@ -24,15 +25,13 @@ public class Pengaduan {
             FROM pengaduan
         """;
 
-        try (Connection c = DatabaseConfig.getConnection();
-             PreparedStatement ps = c.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+        try (Connection c = DatabaseConfig.getConnection(); PreparedStatement ps = c.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 list.add(new Pengaduan(
-                    rs.getString("isi"),
-                    rs.getString("status"),
-                    rs.getString("id_user")
+                        rs.getString("isi"),
+                        rs.getString("status"),
+                        rs.getString("id_user")
                 ));
             }
         } catch (Exception e) {
@@ -42,10 +41,30 @@ public class Pengaduan {
         return list;
     }
 
+    public static boolean insertPengaduan(String isi, int idUser) {
+
+        String sql = """
+        INSERT INTO pengaduan (isi, status, id_user)
+        VALUES (?, 'Diterima', ?)
+    """;
+
+        try (Connection c = DatabaseConfig.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
+
+            ps.setString(1, isi);
+            ps.setInt(2, idUser);
+            ps.executeUpdate();
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public Pengaduan(String isi, String status, String idUser) {
         this.isi = isi;
         this.status = status;
-        this. idUser = idUser;
+        this.idUser = idUser;
     }
 
     public String getIsi() {
@@ -71,8 +90,5 @@ public class Pengaduan {
     public void setIdUser(String idUser) {
         this.idUser = idUser;
     }
-    
-    
-    
-    
+
 }

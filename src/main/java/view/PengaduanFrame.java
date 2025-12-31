@@ -16,6 +16,7 @@ import model.User;
 public class PengaduanFrame extends javax.swing.JFrame {
 
     private HomepageFrame home;
+    private User user;
 
     /**
      * Creates new form PengaduanFrame
@@ -28,6 +29,7 @@ public class PengaduanFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.home = home;
+        this.user = user;
         loadTable(data, user);
     }
 
@@ -79,7 +81,7 @@ public class PengaduanFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablePengaduan = new javax.swing.JTable();
         buttonKembali = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        buatLaporan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,10 +105,10 @@ public class PengaduanFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Kirim Laporan");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buatLaporan.setText("Kirim Laporan");
+        buatLaporan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buatLaporanActionPerformed(evt);
             }
         });
 
@@ -126,7 +128,7 @@ public class PengaduanFrame extends javax.swing.JFrame {
                         .addComponent(buttonKembali))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(buatLaporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -139,7 +141,7 @@ public class PengaduanFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(buatLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(111, 111, 111))
         );
 
@@ -151,9 +153,12 @@ public class PengaduanFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_buttonKembaliActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void buatLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buatLaporanActionPerformed
+        FormPengaduan form = new FormPengaduan(user, this);
+
+        form.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_buatLaporanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,9 +197,14 @@ public class PengaduanFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelNama;
+    private javax.swing.JButton buatLaporan;
     private javax.swing.JButton buttonKembali;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablePengaduan;
     // End of variables declaration//GEN-END:variables
+
+    void refreshTable() {
+        List<Pengaduan> data = Pengaduan.getData();
+        loadTable(data, user);
+    }
 }
