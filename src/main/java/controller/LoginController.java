@@ -23,7 +23,7 @@ public class LoginController {
 
         if (user != null) {
             view.dispose();
-            new HomepageFrame(user.getNama()).setVisible(true);
+            new HomepageFrame(user).setVisible(true);
         } else {
             JOptionPane.showMessageDialog(
                     view,
