@@ -4,33 +4,12 @@
  */
 package controller;
 
-import javax.swing.JOptionPane;
 import model.User;
-import view.HomepageFrame;
-import view.LoginFrame;
 
 public class LoginController {
-
-    private LoginFrame view;
-
-    public LoginController(LoginFrame view) {
-        this.view = view;
+    
+    public User login(String username, String password){
+        return User.login(username, password);
     }
 
-    public void login(String username, String password) {
-
-        User user = User.login(username, password);
-
-        if (user != null) {
-            view.dispose();
-            new HomepageFrame(user).setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(
-                    view,
-                    "Username atau password salah",
-                    "Login Gagal",
-                    JOptionPane.ERROR_MESSAGE
-            );
-        }
-    }
 }

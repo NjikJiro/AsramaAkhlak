@@ -7,8 +7,11 @@ view\LogFrame$1.class
 view\HomepageFrame$3.class
 view\LoginFrame$2.class
 model\Log.class
+view\AdminLoginFrame$2.class
+view\AdminLoginFrame.class
 view\FormPengaduan$1.class
 controller\LoginController.class
+view\AdminLoginFrame$3.class
 view\PengaduanFrame$3.class
 controller\DataPenghuniController.class
 model\User.class
@@ -18,6 +21,7 @@ config\DatabaseConfig.class
 view\LoginFrame$1.class
 view\HomepageFrame$2.class
 com\mycompany\asramaakhlak\AsramaAkhlak.class
+view\AdminLoginFrame$1.class
 view\FormPengaduan$2.class
 view\HomepageFrame$4.class
 view\DataPenghuniFrame$1.class
@@ -25,8 +29,10 @@ controller\PengaduanController.class
 view\HomepageFrame.class
 model\Pengaduan.class
 controller\LogController.class
+view\AdminHomeFrame$1.class
 view\LogFrame.class
 view\PengaduanFrame.class
+view\AdminHomeFrame.class
 view\DataPenghuniFrame.class
 view\LoginFrame.class
 view\PengaduanFrame$2.class
