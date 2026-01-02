@@ -4,6 +4,13 @@
  */
 package view;
 
+import controller.DataPenghuniController;
+import controller.LogController;
+import controller.PengaduanController;
+import java.util.List;
+import model.Log;
+import model.Pengaduan;
+import model.Penghuni;
 import model.User;
 
 /**
@@ -11,19 +18,21 @@ import model.User;
  * @author Adyadma Renjiro
  */
 public class AdminHomeFrame extends javax.swing.JFrame {
+
     private User user;
+
     /**
      * Creates new form AdminHomeFrame
      */
     public AdminHomeFrame() {
         initComponents();
     }
-    
-    
+
     public AdminHomeFrame(User user) {
         initComponents();
         this.user = user;
         setLocationRelativeTo(null); // opsional
+        LabelNama.setText(user.getNama());
     }
 
     /**
@@ -36,30 +45,97 @@ public class AdminHomeFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        LabelNama = new javax.swing.JLabel();
+        buttonDataPenghuni = new javax.swing.JButton();
+        buttonPengaduan = new javax.swing.JButton();
+        buttonLog = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Selamat Datang");
+
+        LabelNama.setFont(new java.awt.Font("Helvetica", 1, 36)); // NOI18N
+        LabelNama.setText("Admin");
+
+        buttonDataPenghuni.setText("Data Penghuni");
+        buttonDataPenghuni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDataPenghuniActionPerformed(evt);
+            }
+        });
+
+        buttonPengaduan.setText("Pengaduan");
+        buttonPengaduan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPengaduanActionPerformed(evt);
+            }
+        });
+
+        buttonLog.setText("Log Keluar Masuk");
+        buttonLog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLogActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(209, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(154, 154, 154))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(LabelNama, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(buttonDataPenghuni, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonPengaduan, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonLog, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(131, 131, 131)
+                .addGap(68, 68, 68)
                 .addComponent(jLabel1)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(LabelNama)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonDataPenghuni, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonPengaduan, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonLog, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonPengaduanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPengaduanActionPerformed
+        PengaduanController controller = new PengaduanController();
+        List<Pengaduan> data = controller.getPengaduan();
+
+        AdminPengaduanFrame frame = new AdminPengaduanFrame(data, user, this);
+        frame.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_buttonPengaduanActionPerformed
+
+    private void buttonDataPenghuniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDataPenghuniActionPerformed
+        DataPenghuniController controller = new DataPenghuniController(this, user);
+        controller.showDataPenghuni();
+    }//GEN-LAST:event_buttonDataPenghuniActionPerformed
+
+    private void buttonLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLogActionPerformed
+
+        LogController controller = new LogController();
+        List<Log> data = controller.getLog();
+
+        AdminLogFrame frame = new AdminLogFrame(data, user, this);
+        frame.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_buttonLogActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,6 +173,10 @@ public class AdminHomeFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelNama;
+    private javax.swing.JButton buttonDataPenghuni;
+    private javax.swing.JButton buttonLog;
+    private javax.swing.JButton buttonPengaduan;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

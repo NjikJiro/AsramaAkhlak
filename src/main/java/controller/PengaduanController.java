@@ -10,28 +10,20 @@ package controller;
  */
 import java.util.List;
 import model.Pengaduan;
-import model.User;
-import view.PengaduanFrame;
-import view.HomepageFrame;
 
 public class PengaduanController {
 
-    private HomepageFrame homepage;
-    private User user;
-
-    public PengaduanController(HomepageFrame homepage, User user) {
-        this.homepage = homepage;
-        this.user = user;
+   public List<Pengaduan> getPengaduan() {
+        return Pengaduan.getData();
     }
 
-    public void showPengaduan() {
-        List<Pengaduan> data;
-
-        data = Pengaduan.getData();
-
-        PengaduanFrame frame = new PengaduanFrame(data, user, homepage);
-        frame.setVisible(true);
-        homepage.setVisible(false);
+    public boolean tambahPengaduan(String isi, int idUser) {
+        return Pengaduan.insertPengaduan(isi, idUser);
     }
+    
+    public boolean updateStatusPengaduan(int idPengaduan, String status) {
+    return Pengaduan.updateStatus(idPengaduan, status);
+}
+
 
 }

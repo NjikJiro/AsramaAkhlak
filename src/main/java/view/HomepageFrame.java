@@ -8,12 +8,16 @@ import controller.DataPenghuniController;
 import controller.LogController;
 import model.User;
 import controller.PengaduanController;
+import java.util.List;
+import model.Log;
+import model.Pengaduan;
 
 /**
  *
  * @author Adyadma Renjiro
  */
 public class HomepageFrame extends javax.swing.JFrame {
+
     private User user;
 
     /**
@@ -37,7 +41,6 @@ public class HomepageFrame extends javax.swing.JFrame {
     //
     // add(label);
     // }
-
     public HomepageFrame(User user) {
         initComponents();
         this.user = user;
@@ -127,11 +130,21 @@ public class HomepageFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonDataPenghuniActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new PengaduanController(this, user).showPengaduan();
+        PengaduanController controller = new PengaduanController();
+        List<Pengaduan> data = controller.getPengaduan();
+
+        PengaduanFrame frame = new PengaduanFrame(data, user, this);
+        frame.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        new LogController(this, user).showLog();
+        LogController controller = new LogController();
+        List<Log> data = controller.getLog();
+
+        LogFrame frame = new LogFrame(data, user, this);
+        frame.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

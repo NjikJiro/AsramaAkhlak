@@ -4,45 +4,47 @@
  */
 package view;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import model.Log;
+import model.User;
+
 /**
  *
  * @author Adyadma Renjiro
  */
-import java.util.List;
-import javax.swing.table.DefaultTableModel;
-import model.Penghuni;
-
-public class DataPenghuniFrame extends javax.swing.JFrame {
-
-    private HomepageFrame home;
+public class AdminLogFrame extends javax.swing.JFrame {
+    private AdminHomeFrame home;
+    private User admin;
 
     /**
-     * Creates new form DataPenghuniFrame
+     * Creates new form AdminLogFrame
      */
-    public DataPenghuniFrame() {
+    public AdminLogFrame() {
         initComponents();
     }
+    
 
-    public DataPenghuniFrame(List<Penghuni> data, HomepageFrame home) {
+    public AdminLogFrame(List<Log> data, User admin, AdminHomeFrame home) {
         initComponents();
         setLocationRelativeTo(null);
         this.home = home;
+        this.admin = admin;
         loadTable(data);
     }
 
-    private void loadTable(List<Penghuni> data) {
-        DefaultTableModel model = (DefaultTableModel) tablePenghuni.getModel();
-
-        model.setColumnIdentifiers(new String[]{
-            "Nama", "Jurusan", "No Kamar"
-        });
+    private void loadTable(List<Log> data) {
+        DefaultTableModel model = (DefaultTableModel) tabel.getModel();
         model.setRowCount(0);
+        model.setColumnIdentifiers(new String[]{
+            "User", "Status", "Waktu"
+        });
 
-        for (Penghuni p : data) {
+        for (Log l : data) {
             model.addRow(new Object[]{
-                p.getNama(),
-                p.getJurusan(),
-                p.getNoKamar()
+                l.getNamaUser(),
+                l.getStatus(),
+                l.getWaktu()
             });
         }
     }
@@ -56,17 +58,13 @@ public class DataPenghuniFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        LabelNama = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablePenghuni = new javax.swing.JTable();
+        tabel = new javax.swing.JTable();
         buttonKembali = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        LabelNama.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        LabelNama.setText("Data Penghuni");
-
-        tablePenghuni.setModel(new javax.swing.table.DefaultTableModel(
+        tabel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -74,7 +72,7 @@ public class DataPenghuniFrame extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(tablePenghuni);
+        jScrollPane1.setViewportView(tabel);
 
         buttonKembali.setText("Kembali");
         buttonKembali.addActionListener(new java.awt.event.ActionListener() {
@@ -88,27 +86,20 @@ public class DataPenghuniFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(LabelNama, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
-                        .addComponent(buttonKembali))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buttonKembali)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 825, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelNama)
-                    .addComponent(buttonKembali))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(43, 43, 43)
+                .addComponent(buttonKembali)
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -136,28 +127,27 @@ public class DataPenghuniFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DataPenghuniFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminLogFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DataPenghuniFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminLogFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DataPenghuniFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminLogFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DataPenghuniFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminLogFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DataPenghuniFrame().setVisible(true);
+                new AdminLogFrame().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LabelNama;
     private javax.swing.JButton buttonKembali;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablePenghuni;
+    private javax.swing.JTable tabel;
     // End of variables declaration//GEN-END:variables
 }
