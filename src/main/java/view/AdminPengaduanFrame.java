@@ -199,7 +199,7 @@ public class AdminPengaduanFrame extends javax.swing.JFrame {
             "ID", "Isi", "Status", "Dari"
         });
 
-        model.setRowCount(0); // 🔥 PENTING: reset data lama
+        model.setRowCount(0);
 
         for (Pengaduan p : data) {
             model.addRow(new Object[]{
